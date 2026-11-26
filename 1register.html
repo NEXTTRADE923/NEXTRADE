@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXTRADE Register</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#101827;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding:25px 15px;
+}
+.container{
+  max-width:420px;
+  margin:20px auto;
+  background:#1c293b;
+  padding:25px;
+  border-radius:15px;
+}
+h1{text-align:center;color:#35d6b0;letter-spacing:3px}
+h2{text-align:center}
+input{
+  width:100%;
+  padding:14px;
+  margin:9px 0;
+  border:1px solid #42536b;
+  border-radius:7px;
+  background:#101827;
+  color:white;
+  font-size:15px;
+}
+button{
+  width:100%;
+  padding:14px;
+  margin-top:15px;
+  background:#35d6b0;
+  border:0;
+  border-radius:7px;
+  font-weight:bold;
+  font-size:16px;
+}
+p{text-align:center;color:#bdc8d8}
+a{color:#35d6b0}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>NEXTRADE</h1>
+<h2>Create Account</h2>
+
+<form id="registerForm">
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Gmail Address" required>
+<input type="tel" placeholder="Mobile Number" required>
+<input type="text" placeholder="Username" required>
+<input type="text" placeholder="Referral Code (Optional)">
+<input type="password" placeholder="Login Password" required minlength="8">
+<input type="password" placeholder="Withdrawal PIN" required minlength="4">
+
+<button type="submit">REGISTER</button>
+</form>
+
+<p>Already have an account? <a href="login.html">Login</a></p>
+<p id="message"></p>
+</div>
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  document.getElementById("message").textContent =
+    "Registration system will activate after database connection.";
+});
+</script>
+</body>
+</html>
