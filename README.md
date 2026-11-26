@@ -1,2 +1,0 @@
-# NEXTRADE
-NEXTRADE Website
