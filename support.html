@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXTRADE Customer Service</title>
+<style>
+body{background:#101827;color:white;font-family:Arial;padding:20px}
+.box{background:#26364c;padding:18px;border-radius:12px}
+input,textarea,button{width:100%;padding:13px;margin:10px 0;box-sizing:border-box;border-radius:8px}
+input,textarea{background:#101827;color:white;border:1px solid #52647a}
+button{background:#38d9a9;border:0}
+a{color:#38d9a9}
+</style>
+</head>
+<body>
+<h1>NEXTRADE</h1>
+<h2>Customer Service</h2>
+<div class="box">
+<label>Subject</label>
+<input id="subject" placeholder="Enter subject">
+
+<label>Message</label>
+<textarea id="message" rows="5" placeholder="Write your message"></textarea>
+
+<label>Payment receipt (optional)</label>
+<input id="receipt" type="file" accept="image/*">
+
+<button id="send">Send Message</button>
+<p id="status"></p>
+</div>
+<p><a href="dashboard.html">Back to Dashboard</a></p>
+<script type="module" src="support.js"></script>
+</body>
+</html>

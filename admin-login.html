@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXTRADE Admin Login</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#101827;
+  color:white;
+  font-family:Arial;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px
+}
+.box{
+  background:#26364c;
+  padding:25px;
+  border-radius:15px;
+  width:100%;
+  max-width:380px
+}
+h1{text-align:center;color:#38d9a9}
+input,button{
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border-radius:8px;
+  font-size:16px
+}
+input{
+  background:#101827;
+  color:white;
+  border:1px solid #52647a
+}
+button{
+  background:#38d9a9;
+  border:0;
+  font-weight:bold
+}
+#status{color:#ffcc66}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>NEXTRADE</h1>
+<h2>Admin Login</h2>
+
+<form id="adminLoginForm">
+<input id="email" type="email"
+placeholder="Admin Email" required>
+
+<input id="password" type="password"
+placeholder="Admin Password" required>
+
+<button type="submit">LOGIN TO ADMIN</button>
+</form>
+
+<p id="status"></p>
+</div>
+
+<script type="module" src="admin-login.js"></script>
+</body>
+</html>

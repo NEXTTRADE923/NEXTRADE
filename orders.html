@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXTRADE Grab Orders</title>
+<style>
+body{background:#101827;color:white;font-family:Arial;padding:20px}
+.box{background:#26364c;padding:18px;border-radius:12px;margin:15px 0}
+.order{background:#101827;padding:15px;border-radius:10px;margin:12px 0}
+button{width:100%;padding:14px;background:#38d9a9;border:0;border-radius:8px;font-weight:bold}
+a{color:#38d9a9}
+small{color:#aab8ca}
+</style>
+</head>
+<body>
+<h1>NEXTRADE</h1>
+<h2>Grab Order</h2>
+
+<div class="box">
+<h3>Available  Order</h3>
+<div class="order">
+<p>Order Amount: <b id="amount">Rs. 5,000</b></p>
+<p>Deposit Required: <b>Rs. 0</b></p>
+<p>Estimated Profit: <b id="profit">Rs. 250</b></p>
+<small>Demo values only. No real payment or earnings.</small>
+</div>
+<button id="grab">Grab  Order</button>
+<p id="status"></p>
+</div>
+
+<div class="box">
+<h3>My Orders</h3>
+<p id="total">Completed: 0</p>
+<div id="orderList">No orders yet</div>
+</div>
+
+<p><a href="dashboard.html">Back to Dashboard</a></p>
+<script type="module" src="orders.js"></script>
+</body>
+</html>

@@ -4,45 +4,305 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NEXTRADE Admin</title>
+<title>NEXTRADE Admin Panel</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#101827;color:white;font-family:Arial}
-header{background:#1c293b;padding:22px;text-align:center}
-h1{color:#35d6b0;letter-spacing:3px}
-main{padding:18px;max-width:600px;margin:auto}
-.card{background:#1c293b;padding:18px;margin:14px 0;border-radius:10px}
-h3{color:#35d6b0}
-.item{display:block;padding:15px;margin:10px 0;background:#26364b;color:white;text-decoration:none;border-radius:7px}
-.note{color:#bdc8d8;font-size:14px}
+body{display:none;margin:0;background:#101827;color:white;font-family:Arial}
+header{background:#172438;padding:17px;display:flex;justify-content:space-between;align-items:center}
+header h2{color:#38d9a9;margin:0}
+header p{color:#aab8ca;margin:5px 0;font-size:13px}
+button{cursor:pointer}
+#logout{background:#e05252;color:white;border:0;padding:11px;border-radius:7px}
+nav{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:12px}
+nav button{background:#26364c;color:white;border:0;padding:13px 5px;border-radius:8px}
+nav button.selected{background:#38d9a9;color:#101827;font-weight:bold}
+main{padding:14px}
+section{display:none}
+section.active{display:block}
+h3{color:#38d9a9}
+.card{background:#1d2b40;padding:15px;border-radius:10px;margin:10px 0}
+input,select,textarea{width:100%;padding:12px;margin:7px 0;background:#26364c;color:white;border:1px solid #52647a;border-radius:7px}
+.action{background:#38d9a9;color:#101827;border:0;padding:13px;border-radius:7px;width:100%;margin:8px 0;font-weight:bold}
+.small{font-size:13px;color:#aab8ca}
+.stat{font-size:23px;color:#38d9a9;font-weight:bold}
+#securityStatus{padding:20px;color:#aab8ca}
 </style>
 </head>
 <body>
+
+<div id="securityStatus">Checking admin access...</div>
+
+<div id="adminApp" style="display:none">
 <header>
-<h1>NEXTRADE</h1>
-<p>ADMIN PANEL</p>
+<div>
+<h2>NEXTRADE</h2>
+<p>Owner Administration Panel</p>
+</div>
+<button id="logout">Logout</button>
 </header>
+
+<nav>
+<button class="selected" onclick="show('dashboard',this)">Dashboard</button>
+<button onclick="show('customers',this)">Customers</button>
+<button onclick="show('vip',this)">VIP Levels</button>
+<button onclick="show('products',this)">Products</button>
+<button onclick="show('orders',this)">Orders</button>
+<button onclick="show('orderSettings',this)">Order Settings</button>
+<button onclick="show('earnings',this)">Earnings</button>
+<button onclick="show('deposits',this)">Deposits</button>
+<button onclick="show('withdrawals',this)">Withdrawals</button>
+<button onclick="show('wallet',this)">Wallet Records</button>
+<button onclick="show('referrals',this)">Referrals</button>
+<button onclick="show('support',this)">Customer Support</button>
+<button onclick="show('notifications',this)">Notifications</button>
+<button onclick="show('reports',this)">Reports</button>
+<button onclick="show('settings',this)">Settings</button>
+</nav>
+
 <main>
-<div class="card">
-<h3>Admin Dashboard</h3>
-<p>Total Customers: 0</p>
-<p>Pending Deposits: 0</p>
-<p>Pending Withdrawals: 0</p>
-</div>
-<div class="card">
-<h3>Management</h3>
-<a class="item" href="#">Customer Management</a>
-<a class="item" href="#">VIP Level Settings</a>
-<a class="item" href="#">Product Management</a>
-<a class="item" href="#">Order Management</a>
-<a class="item" href="#">Deposit Records</a>
-<a class="item" href="#">Withdrawal Records</a>
-<a class="item" href="#">Wallet Management</a>
-<a class="item" href="#">Referral Management</a>
-<a class="item" href="#">Customer Service</a>
-<a class="item" href="#">Reports</a>
-</div>
-<p class="note">Admin data and controls will activate after secure database connection.</p>
+<section id="dashboard" class="active">
+<h3>Owner Dashboard</h3>
+<div class="card"><div class="stat">NEXTRADE</div>Admin Overview</div>
+<div class="card">Customer Management</div>
+<div class="card">Product Management</div>
+<div class="card">Order Management</div>
+<div class="card">VIP Management</div>
+<div class="card">Referral Management</div>
+</section>
+
+<section id="customers">
+<h3>Customer Management</h3>
+<input id="customerSearch" placeholder="Search customer username">
+<button class="action" onclick="demoMessage('Customer search')">Search</button>
+<div class="card">Customer records will appear after secure database connection.</div>
+<p class="small">Customer passwords are never displayed.</p>
+</section>
+
+<section id="vip">
+<h3>VIP Level Management</h3>
+<div class="card"><b>VIP 1</b><p>40 orders</p></div>
+<div class="card"><b>VIP 2</b><p>50 orders</p></div>
+<div class="card"><b>VIP 3</b><p>60 orders</p></div>
+<p class="small">Demo configuration only.</p>
+</section>
+
+<section id="products">
+<h3>Products Management</h3>
+<input id="productName" placeholder="Product name">
+<textarea id="productDescription" placeholder="Product description"></textarea>
+<input id="productPrice" type="number" min="0" placeholder="Demo price">
+<button class="action" onclick="previewProduct()">Preview Product</button>
+<div id="productPreview" class="card">Product preview.</div>
+</section>
+
+<section id="orders">
+<h3>Order Management</h3>
+<input placeholder="Search order ID">
+<select>
+<option>All orders</option>
+<option>Pending</option>
+<option>Assigned</option>
+<option>Completed</option>
+<option>Cancelled</option>
+</select>
+<div class="card">Order records will appear after database connection.</div>
+</section>
+
+<section id="orderSettings">
+<h3>real Order Settings</h3>
+<label>Order Name</label>
+<input id="orderName" placeholder="Demo order name">
+<label>Order Amount</label>
+<input id="orderAmount" type="number" min="0" placeholder="Demo amount">
+<label>Demo Deposit Amount</label>
+<input id="depositAmount" type="number" min="0" placeholder="Demo amount">
+<label>Estimated Demo Value</label>
+<input id="demoProfit" type="number" min="0" placeholder="Demo estimate">
+<button class="action" onclick="saveDemoOrder()">Save Settings</button>
+<p id="orderStatus"></p>
+<div id="savedOrder" class="card">No demo settings saved.</div>
+<p class="small">Sample values only. No real payments or earnings.</p>
+</section>
+
+<section id="earnings">
+<h3>Demo Earnings</h3>
+<div class="card"> real earnings are calculated.</div>
+</section>
+
+<section id="deposits">
+<h3>Demo Deposit Records</h3>
+<div class="card">real deposit records will appear after database connection.</div>
+<p class="small">No real payment collection is enabled.</p>
+</section>
+
+<section id="withdrawals">
+<h3>Demo Withdrawal Records</h3>
+<div class="card">Demo withdrawal records will appear after database connection.</div>
+<p class="small">No real payouts are enabled.</p>
+</section>
+
+<section id="wallet">
+<h3>Wallet Records</h3>
+<div class="card">Demo wallet records only.</div>
+<p class="small">No real balance or transfers.</p>
+</section>
+
+<section id="referrals">
+<h3>Referral Management</h3>
+<input id="referralSearch" placeholder="Search referral code">
+<button class="action" onclick="demoMessage('Referral search')">Search</button>
+<div class="card">Referral records will appear after database connection.</div>
+</section>
+
+<section id="support">
+<h3>Customer Support</h3>
+<input placeholder="Customer username">
+<textarea id="supportReply" placeholder="Write support reply"></textarea>
+<button class="action" onclick="previewText('supportReply','supportPreview')">Preview Reply</button>
+<div id="supportPreview" class="card">Reply preview.</div>
+</section>
+
+<section id="notifications">
+<h3>Notifications</h3>
+<input id="notificationTitle" placeholder="Notification title">
+<textarea id="notificationText" placeholder="Write announcement"></textarea>
+<button class="action" onclick="previewNotification()">Preview Announcement</button>
+<div id="notificationPreview" class="card">Announcement preview.</div>
+</section>
+
+<section id="reports">
+<h3>Reports</h3>
+<div class="card">Customer Report — Demo</div>
+<div class="card">Order Report — Demo</div>
+<div class="card">Product Report — Demo</div>
+<div class="card">Referral Report — Demo</div>
+</section>
+
+<section id="settings">
+<h3>Owner Settings</h3>
+<input id="adminName" placeholder="Admin display name">
+<button class="action" onclick="saveAdminName()">Save Display Name</button>
+<p id="settingsStatus" class="small"></p>
+<div class="card">Admin access is checked through Supabase.</div>
+</section>
 </main>
+</div>
+
+<script>
+function show(id,button){
+ document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('selected'));
+ if(button)button.classList.add('selected');
+ window.scrollTo(0,0);
+}
+
+function demoMessage(name){
+ alert(name+' is demo only.');
+}
+
+function previewProduct(){
+ const name=document.getElementById('productName').value;
+ const desc=document.getElementById('productDescription').value;
+ const price=document.getElementById('productPrice').value;
+ document.getElementById('productPreview').textContent=
+ name+' | '+desc+' | Demo price: '+price;
+}
+
+function previewText(inputId,outputId){
+ document.getElementById(outputId).textContent=
+ document.getElementById(inputId).value||'No text entered.';
+}
+
+function previewNotification(){
+ const title=document.getElementById('notificationTitle').value;
+ const message=document.getElementById('notificationText').value;
+ document.getElementById('notificationPreview').textContent=title+' — '+message;
+}
+
+function saveAdminName(){
+ const name=document.getElementById('adminName').value.trim();
+ document.getElementById('settingsStatus').textContent=
+ name?'Display name preview: '+name:'Enter a display name.';
+}
+
+function saveDemoOrder(){
+ const name=document.getElementById('orderName').value.trim();
+ const amount=Number(document.getElementById('orderAmount').value);
+ const deposit=Number(document.getElementById('depositAmount').value);
+ const profit=Number(document.getElementById('demoProfit').value);
+ const status=document.getElementById('orderStatus');
+
+ if(!name||amount<=0||deposit<0||profit<0||
+ !document.getElementById('orderAmount').value||
+ !document.getElementById('depositAmount').value||
+ !document.getElementById('demoProfit').value){
+  status.textContent='Please enter valid real values.';
+  return;
+ }
+
+ const order={name,amount,deposit,profit};
+ localStorage.setItem('nextrade_demo_order',JSON.stringify(order));
+ displayDemoOrder(order);
+ status.textContent='real settings saved on this device.';
+}
+
+function displayDemoOrder(order){
+ document.getElementById('savedOrder').textContent=
+ order.name+' | Amount: '+order.amount+
+ ' | real Deposit: '+order.deposit+
+ ' | real Value: '+order.profit;
+}
+
+try{
+ const saved=localStorage.getItem('nextrade_real_order');
+ if(saved)displayDemoOrder(JSON.parse(saved));
+}catch(e){}
+</script>
+
+<script type="module">
+import {supabase} from './supabase.js';
+
+const status=document.getElementById('securityStatus');
+
+async function verifyAdmin(){
+ try{
+  const {data:{user},error}=await supabase.auth.getUser();
+
+  if(error||!user){
+   location.replace('admin-login.html');
+   return;
+  }
+
+  const {data:admin,error:adminError}=await supabase
+   .from('admin_users')
+   .select('user_id')
+   .eq('user_id',user.id)
+   .maybeSingle();
+
+  if(adminError||!admin){
+   await supabase.auth.signOut();
+   location.replace('admin-login.html');
+   return;
+  }
+
+  document.getElementById('adminApp').style.display='block';
+  status.style.display='none';
+  document.body.style.display='block';
+
+ }catch(e){
+  status.textContent='Admin verification failed. Check your connection.';
+  document.body.style.display='block';
+ }
+}
+
+document.getElementById('logout').addEventListener('click',async()=>{
+ await supabase.auth.signOut();
+ location.replace('admin-login.html');
+});
+
+verifyAdmin();
+</script>
+
 </body>
 </html>

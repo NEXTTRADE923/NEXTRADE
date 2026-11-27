@@ -1,21 +1,16 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NEXTRADE Dashboard</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXTRADE Customer</title>
 <style>
-*{box-sizing:border-box}
 body{margin:0;background:#101827;color:white;font-family:Arial}
-header{background:#1c293b;padding:22px;text-align:center}
-h1{color:#35d6b0;letter-spacing:3px;margin:0}
-main{padding:20px;max-width:500px;margin:auto}
-.card{background:#1c293b;padding:20px;margin:15px 0;border-radius:12px}
-.card h3{color:#35d6b0;margin-top:0}
-.value{font-size:24px;font-weight:bold}
-a{display:block;background:#1c293b;padding:16px;margin:12px 0;border-radius:8px;color:white;text-decoration:none}
-.logout{background:#a93232;text-align:center}
+header{background:#18263a;padding:20px}
+h1{color:#38d9a9}
+main{padding:18px}
+.card{background:#26364c;padding:18px;margin:12px 0;border-radius:10px}
+a{color:#38d9a9;text-decoration:none}
 </style>
 </head>
 <body>
@@ -24,26 +19,16 @@ a{display:block;background:#1c293b;padding:16px;margin:12px 0;border-radius:8px;
 <p>Customer Dashboard</p>
 </header>
 <main>
-<p>Welcome to NEXTRADE</p>
-<div class="card">
-<h3>My Wallet</h3>
-<div class="value">$0.00</div>
-</div>
-<div class="card">
-<h3>My Earnings</h3>
-<div class="value">$0.00</div>
-</div>
-<div class="card">
-<h3>My Orders</h3>
-<div class="value">0</div>
-</div>
-<a href="#">Grab Order</a>
-<a href="#">My Orders</a>
-<a href="#">My Profile</a>
-<a href="#">Deposit</a>
-<a href="#">Withdraw</a>
-<a href="#">Customer Service</a>
-<a class="logout" href="login.html">Logout</a>
+<div class="card"><h3>My Wallet</h3><p id="wallet">Loading...</p></div>
+<div class="card"><h3>My Orders</h3><p id="orders">Loading...</p></div>
+<div class="card"><h3>VIP Level</h3><p id="vip">Loading...</p></div>
+<div class="card"><a href="deposit.html">Deposit</a></div>
+<div class="card"><a href="withdraw.html">Withdraw</a></div>
+<div class="card"><a href="referral.html">Invite Friends</a></div>
+<div class="card"><a href="profile.html">My Profile</a></div>
+<div class="card"><a href="orders.html">Order History</a></div>
+<button id="logout">Logout</button>
 </main>
+<script type="module" src="dashboard.js"></script>
 </body>
 </html>
