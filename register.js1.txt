@@ -1,0 +1,50 @@
+import { supabase } from './supabase.js';
+
+const form = document.getElementById('registerForm');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const full_name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const mobile = document.getElementById('mobile').value.trim();
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+
+  const params = new URLSearchParams(window.location.search);
+  const referred_code = params.get('ref') || null;
+
+  const button = form.querySelector('button');
+  button.disabled = true;
+  button.textContent = 'Creating account...';
+
+  try {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          full_name,
+          username,
+          mobile,
+          referred_code
+        }
+      }
+    });
+
+    if (error) throw error;
+
+    if (data.session) {
+      alert('Account created successfully');
+      location.href = 'dashboard.html';
+    } else {
+      alert('Registration submitted. Email confirmation may be required.');
+    }
+
+  } catch (error) {
+    alert(error.message);
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Create Account';
+  }
+});
